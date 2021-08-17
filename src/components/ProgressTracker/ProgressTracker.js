@@ -4,7 +4,6 @@ import "./ProgressTracker.css";
 const ProgressTracker = () => {
     return (
         <div className="dashboard-component" id="progress-tracker">
-
         </div>
     )
 }

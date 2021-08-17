@@ -3,24 +3,27 @@ import { createSlice, createSelector } from "@reduxjs/toolkit";
 export const prioritySlice = createSlice({
     name: "priorityList",
     initialState: {
-        tasks: [],
-        isLoading: false,
-        error: false
+        tasks: [
+            {id: 0, task: "New Task", completed: false},
+            {id: 1, task: "Next Task", completed: false},
+            {id: 2, task: "Last Task", completed: false}
+        ]
     },
     reducers: {
         addTask(state, action) {
             const {id, task} = action.payload;
-            state.push({id, task, completed: false});
+            state.tasks.push({id, task, completed: false});
         },
         toggleTask(state, action) {
-            const task = state.find(task => task.id === action.payload);
+            const task = state.tasks.find(task => task.id === action.payload);
             if (task) {
                 task.completed = !task.completed
             }
         },
+        // Currently returning the tasks array, but need to return the state object - need to investigate
         removeTask(state, action) {
-            const {id} = action.payload;
-            return state.filter(task => task.id !== id);
+            const id = action.payload;
+            return state.tasks.filter(task => task.id !== id);
         }
     }
 });
@@ -32,6 +35,8 @@ export const {
 } = prioritySlice.actions;
 
 export default prioritySlice.reducer;
+
+export const selectTasks = (state) => state.priorityList.tasks;
 
 // Add any thunks
 
