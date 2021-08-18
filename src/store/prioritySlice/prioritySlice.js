@@ -11,8 +11,8 @@ export const prioritySlice = createSlice({
     },
     reducers: {
         addTask(state, action) {
-            const {id, task} = action.payload;
-            state.tasks.push({id, task, completed: false});
+            const id = state.tasks.length;
+            state.tasks.push({id: id, task: "New task", completed: false});
         },
         toggleTask(state, action) {
             const task = state.tasks.find(task => task.id === action.payload);

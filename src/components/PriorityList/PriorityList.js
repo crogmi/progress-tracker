@@ -23,7 +23,7 @@ const PriorityList = () => {
     return(
         <div className="dashboard-component" id="priority-list">
             <h2 className="subtitle">Priority List</h2>
-            <button>
+            <button onClick={() => dispatch(addTask())}>
                 <VscAdd />
             </button>
             <ol>

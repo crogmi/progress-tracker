@@ -1,8 +1,17 @@
 import reducer, {addTask, removeTask, toggleTask} from "./prioritySlice";
 
 describe("prioritySlice", () => {
+    
+    const initialState = {
+        tasks: [
+            {id: 0, task: "New Task", completed: false},
+            {id: 1, task: "Next Task", completed: false},
+            {id: 2, task: "Last Task", completed: false}
+        ]
+    };
+    
     it("should return an initial state of blank tasks and loading / error as false", () => {
-        expect(reducer(undefined, {})).toEqual({
+        expect(reducer(initialState, {})).toEqual({
             tasks: [
                 {id: 0, task: "New Task", completed: false},
                 {id: 1, task: "Next Task", completed: false},
@@ -15,11 +24,11 @@ describe("prioritySlice", () => {
         const previousState = {
             tasks: []
         };
-        expect(reducer(previousState, addTask({id: 0, task: 'New Task'}))).toEqual({
+        expect(reducer(previousState, addTask())).toEqual({
             tasks: [
                 {
                     id: 0,
-                    task: 'New Task',
+                    task: 'New task',
                     completed: false
                 }
             ]
