@@ -23,7 +23,7 @@ export const prioritySlice = createSlice({
         // Currently returning the tasks array, but need to return the state object - need to investigate
         removeTask(state, action) {
             const id = action.payload;
-            return state.tasks.filter(task => task.id !== id);
+            state.tasks = state.tasks.filter(task => task.id !== id);
         }
     }
 });
